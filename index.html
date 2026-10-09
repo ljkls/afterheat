@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잔열 | AFTERHEAT</title>
+<meta name="description" content="한여름의 연애 프로그램 《잔열 | AFTERHEAT》 — 당신의 여름은 누구에게 남을까요?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;900&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0a2a30; --sea:#1f8c93; --foam:#e9f7f4; --sun:#fff3c9;
+  --serif:'Noto Serif KR','Nanum Myeongjo',serif; --sans:'Noto Sans KR',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--foam);font-family:var(--sans);font-weight:300;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+
+/* 상단 내비게이션 */
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;gap:4px;justify-content:center;flex-wrap:wrap;padding:10px 12px;background:linear-gradient(rgba(6,28,33,.75),rgba(6,28,33,0));backdrop-filter:blur(2px)}
+nav a{font-size:13px;text-decoration:none;padding:4px 11px;border-radius:99px;color:rgba(233,247,244,.8);border:1px solid transparent;transition:.2s}
+nav a:hover,nav a.on{border-color:var(--c,var(--sun));color:#fff}
+
+/* 표지 */
+.cover{min-height:100svh;display:grid;place-items:center;text-align:center;position:relative;background:url(images/cover.jpg) center/cover;padding:90px 24px 70px}
+.cover::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.45),rgba(255,255,255,0) 65%),linear-gradient(rgba(10,42,48,0) 60%,var(--deep))}
+.cover>*{position:relative;z-index:1}
+.cover .tag{font-size:14px;letter-spacing:.08em;color:#0a3a40;background:rgba(255,255,255,.55);display:inline-block;padding:5px 16px;border-radius:99px;backdrop-filter:blur(4px)}
+.cover h1{font-family:var(--serif);font-weight:900;font-size:clamp(88px,22vw,190px);line-height:1.02;color:#0b5961;margin:18px 0 6px;letter-spacing:.04em;text-shadow:0 0 40px rgba(255,255,255,.55)}
+.cover .en{font-family:var(--serif);letter-spacing:.7em;font-size:15px;color:#0b5961;margin-right:-.7em}
+.cover .quote{margin-top:44px;font-family:var(--serif);font-size:clamp(15px,3.6vw,19px);color:#073a40;background:rgba(255,255,255,.5);padding:10px 22px;border-radius:12px;display:inline-block;backdrop-filter:blur(4px)}
+.cover .go{display:block;margin-top:26px;font-size:13px;color:#073a40;text-decoration:none}
+
+/* 소개 */
+.intro{max-width:640px;margin:0 auto;padding:70px 24px 90px;text-align:center}
+.intro p{margin-bottom:1.1em;font-size:16px}
+.intro .big{font-family:var(--serif);font-size:clamp(20px,4.5vw,26px);line-height:1.6;color:var(--sun);font-weight:600}
+
+/* 출연자 */
+.char{min-height:100svh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(24px,5vw,80px);padding:90px clamp(20px,6vw,100px);background:color-mix(in srgb,var(--c) 16%,var(--deep));border-top:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.char:nth-of-type(even) .pic{order:2}
+.pic{position:relative;max-width:460px;width:100%;justify-self:center}
+.pic img{display:block;width:100%;aspect-ratio:832/1216;object-fit:cover;border-radius:220px 220px 14px 14px;box-shadow:0 30px 70px rgba(0,0,0,.45);background:var(--c)}
+.pic::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--c);border-radius:230px 230px 18px 18px;z-index:-1}
+.info{max-width:520px}
+.info .emoji{font-size:34px;line-height:1}
+.info h2{font-family:var(--serif);font-weight:900;font-size:clamp(44px,8vw,76px);line-height:1.15;margin:10px 0 4px;letter-spacing:.02em}
+.meta{font-size:15px;color:color-mix(in srgb,var(--c) 55%,#fff);margin-bottom:22px}
+.look{font-size:14px;opacity:.75;padding-left:14px;border-left:2px solid var(--c);margin-bottom:22px}
+.line{font-family:var(--serif);font-size:clamp(18px,3.2vw,23px);line-height:1.7;font-weight:600;margin-bottom:12px}
+.desc{font-size:15.5px;opacity:.9}
+
+
+/* 정보 섹션 공통 */
+.sub{padding:100px clamp(20px,6vw,100px);background:var(--deep);border-top:1px solid rgba(233,247,244,.15)}
+.sub:nth-of-type(odd){background:#0d343b}
+.wrap{max-width:980px;margin:0 auto}
+.sub h2{font-family:var(--serif);font-weight:900;font-size:clamp(34px,6vw,52px);margin-bottom:8px}
+.sub .lead{opacity:.75;margin-bottom:44px}
+
+/* 14일 일정 */
+.days{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(7,auto);grid-auto-flow:column;gap:0 48px}
+.days li{display:grid;grid-template-columns:72px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(233,247,244,.14)}
+.days b{font-family:var(--serif);font-size:30px;line-height:1.1;color:var(--sun)}
+.days b small{display:block;font-family:var(--sans);font-size:11px;font-weight:400;opacity:.7;letter-spacing:.1em}
+.days h3{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:2px}
+.days p{font-size:14.5px;opacity:.82;line-height:1.7}
+.days li.pre b,.days li.pre h3{opacity:.55}
+.days li.new{background:linear-gradient(90deg,rgba(255,243,201,.12),transparent);margin:0 -14px;padding-left:14px;border-radius:8px}
+.days li.last b{color:#ffb8a8}
+
+/* 숙소 */
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.room{padding:24px 22px;border:1px solid rgba(233,247,244,.22);border-radius:6px 28px 6px 28px}
+.room .e{font-size:30px}
+.room h3{font-family:var(--serif);font-size:19px;margin:8px 0 6px}
+.room p{font-size:14.5px;opacity:.85;line-height:1.7}
+
+/* 제작진 Q&A */
+details{border-bottom:1px solid rgba(233,247,244,.2);padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:18px 36px 18px 0;font-family:var(--serif);font-size:18px;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:24px;color:var(--sun);transition:transform .25s}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details p{padding:0 0 22px;opacity:.88;max-width:640px}
+
+@media(max-width:760px){
+  .sub{padding:80px 20px}
+  .days{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}
+  .rooms{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.rooms{grid-template-columns:1fr}}
+
+footer{padding:60px 24px;text-align:center;font-family:var(--serif);color:var(--sun);background:var(--deep)}
+footer small{display:block;margin-top:10px;font-family:var(--sans);font-size:12px;opacity:.55}
+
+@media(max-width:760px){
+  .char{grid-template-columns:1fr;padding-top:80px}
+  .char:nth-of-type(even) .pic{order:0}
+  .pic{max-width:340px}
+  .info{max-width:none}
+  nav{padding:8px}
+  nav a{font-size:12px;padding:3px 8px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav id="nav" aria-label="페이지 이동">
+  <a href="#top" style="--c:#8fe3e0">표지</a>
+</nav>
+
+<header class="cover" id="top">
+  <div>
+    <span class="tag">한여름의 연애 프로그램</span>
+    <h1>殘熱</h1>
+    <div class="en">AFTERHEAT</div>
+    <p class="quote">“여름은 끝나도, 마음의 온도는 쉽게 식지 않는다.”</p>
+    <a class="go" href="#intro">출연진 보기 ↓</a>
+  </div>
+</header>
+
+<section class="intro" id="intro">
+  <p class="big">열네 번의 낮과 밤,<br>그중 네 번의 밤이 지나갔다.</p>
+  <p>이미 서로에게 마음이 기울기 시작한 일곱 명의 출연자.<br>익숙해진 시선과 미묘한 감정 사이로, 5일 차의 새로운 입주자가 등장한다.</p>
+  <p>예고 없이 찾아온 여덟 번째 출연자에 일곱 사람의 시선이 쏠린다.<br>누군가는 호기심을 보이고, 누군가는 경계하며,<br>또 누군가는 이미 마음에 둔 상대의 반응부터 살핀다.</p>
+  <p>남은 시간은 단 10일.<br>이곳에서 당신은 누구의 마음에 잔열을 남기게 될까?</p>
+</section>
+
+<main id="chars"></main>
+
+<section class="sub" id="schedule"><div class="wrap">
+<h2>14일간의 일정</h2><p class="lead">네 번의 밤이 지난 5일 차, 여덟 번째 출연자가 입주합니다.</p>
+<ol class="days">
+<li class="pre"><b><small>DAY</small>01</b><div><h3>첫 만남</h3><p>일곱 명의 입주, 자기소개와 첫인상 선택.</p></div></li>
+<li class="pre"><b><small>DAY</small>02</b><div><h3>우연의 데이트</h3><p>무작위로 정해지는 세 쌍의 데이트. 한 명은 숙소에 남는다.</p></div></li>
+<li class="pre"><b><small>DAY</small>03</b><div><h3>선택의 시작</h3><p>게임 승자가 직접 데이트 상대를 선택하는 날.</p></div></li>
+<li class="pre"><b><small>DAY</small>04</b><div><h3>한여름의 풀 파티</h3><p>수영장과 바비큐 파티, 조금씩 드러나는 호감의 방향.</p></div></li>
+<li class="new"><b><small>DAY</small>05</b><div><h3>새로운 입주자</h3><p>여덟 번째 출연자의 등장. 소지품 매칭 데이트와 환영 파티.</p></div></li>
+<li class=""><b><small>DAY</small>06</b><div><h3>낯선 동거</h3><p>룸메이트 재배정, 랜덤 페어 요리 대결.</p></div></li>
+<li class=""><b><small>DAY</small>07</b><div><h3>첫인상의 진실</h3><p>익명 사진 데이트와 첫날의 첫인상 선택 결과 공개.</p></div></li>
+<li class=""><b><small>DAY</small>08</b><div><h3>바다로 떠나는 날</h3><p>여덟 명이 함께 떠나는 여름 바다 여행.</p></div></li>
+<li class=""><b><small>DAY</small>09</b><div><h3>쟁취하는 데이트</h3><p>게임으로 획득한 선택권. 원하는 상대에게 데이트 신청.</p></div></li>
+<li class=""><b><small>DAY</small>10</b><div><h3>서로의 선택</h3><p>서로를 선택한 두 사람만 성사되는 비밀 데이트.</p></div></li>
+<li class=""><b><small>DAY</small>11</b><div><h3>익명의 진심</h3><p>자유로운 하루 끝, 마음이 향하는 사람에게 보내는 익명 메시지.</p></div></li>
+<li class=""><b><small>DAY</small>12</b><div><h3>단둘만의 하룻밤</h3><p>게임 승자 한 명에게 주어지는 1박 2일 데이트 선택권.</p></div></li>
+<li class=""><b><small>DAY</small>13</b><div><h3>마지막 밤</h3><p>숙소로 돌아온 두 사람, 마지막 대화와 함께하는 저녁 식사.</p></div></li>
+<li class="last"><b><small>DAY</small>14</b><div><h3>최종 선택</h3><p>열네 번의 낮과 밤이 끝난 뒤, 서로의 마음이 향하는 곳.</p></div></li>
+</ol></div></section>
+
+<section class="sub" id="house"><div class="wrap">
+<h2>AFTERHEAT HOUSE</h2><p class="lead">서울 근교에 자리한 대형 프라이빗 풀빌라. 탁 트인 거실과 여덟 명이 함께 식사할 수 있는 다이닝 공간, 햇살이 쏟아지는 야외 수영장까지!</p>
+<div class="rooms">
+<div class="room"><div class="e" aria-hidden="true">🛋️</div><h3>공용 거실</h3><p>다 함께 모여 수다를 떨거나 영화를 보는 공간</p></div>
+<div class="room"><div class="e" aria-hidden="true">🍳</div><h3>오픈 키친 & 다이닝룸</h3><p>여덟 명의 식사와 요리 대결이 펼쳐지는 곳</p></div>
+<div class="room"><div class="e" aria-hidden="true">🛏️</div><h3>침실 A~D</h3><p>2인 1실, 각 방에 침대 2개와 전용 욕실 구비. 룸메이트는 일정에 따라 변경될 수 있습니다</p></div>
+<div class="room"><div class="e" aria-hidden="true">🏊</div><h3>야외 수영장 & 풀 데크</h3><p>물놀이부터 느긋한 선탠까지, 여름을 만끽하는 공간</p></div>
+<div class="room"><div class="e" aria-hidden="true">🍖</div><h3>바비큐 존</h3><p>저녁 식사와 술자리, 예상치 못한 대화가 시작되는 곳</p></div>
+<div class="room"><div class="e" aria-hidden="true">🌿</div><h3>테라스 & 정원</h3><p>혼자 바람을 쐬거나 누군가와 조용히 이야기를 나누기 좋은 공간</p></div>
+</div></div></section>
+
+<section class="sub" id="qna"><div class="wrap">
+<h2>제작진이 알려드립니다!</h2><p class="lead">질문을 누르면 답변이 열립니다.</p>
+<details><summary>📹 카메라는 하루 종일 돌아가나요?</summary><p>아니요! 출연자분들의 편안한 합숙생활을 위해 공용 공간 촬영은 매일 밤 12시에 종료됩니다. 카메라와 마이크가 모두 꺼진 이후의 시간은 출연자 여러분의 자유입니다.</p></details>
+<details><summary>🔒 침실에도 카메라가 있나요?</summary><p>침실, 욕실, 탈의 공간은 처음부터 촬영하지 않습니다. 개인적인 휴식과 사생활은 철저히 보장됩니다.</p></details>
+<details><summary>🌙 촬영이 끝나면 바로 자야 하나요?</summary><p>전혀요! 촬영이 종료되어도 숙소 생활은 계속됩니다. 야식을 만들어 먹거나, 늦은 밤 수다를 떨거나, 누군가와 단둘이 시간을 보내셔도 괜찮습니다.</p></details>
+<details><summary>💌 촬영하지 않은 시간의 이야기도 방송에 나오나요?</summary><p>촬영되지 않은 사적인 장면은 방송에 공개되지 않습니다. 다만 다음 날 출연자들의 대화나 행동을 통해 자연스럽게 드러나는 이야기는 방송에 담길 수 있습니다.</p></details>
+</div></section>
+
+<footer>
+  당신의 여름은 누구에게 남을까요?
+  <small>《잔열 | AFTERHEAT》 · 창작 설정 기반 팬메이드 페이지</small>
+</footer>
+
+<script>
+const cast=[
+ {id:"kwonwoo",c:"#8a4be0",emoji:"💜",name:"신권우",age:"36세",job:"건물주",h:"193cm",look:"보랏빛이 은은하게 도는 흑발과 보라색 눈. 능글맞은 미소가 매력적인 남성적인 미남",line:"능글맞은 웃음과 여유로운 태도, 어디로 튈지 모르는 자유로운 남자",desc:"누구에게나 장난을 걸지만, 진심을 보이는 순간은 의외로 드물다"},
+ {id:"yeonggwang",c:"#2a46c7",emoji:"🧊",name:"우영광",age:"32세",job:"무직",h:"191cm",look:"애쉬빛 흑발과 선명한 푸른 눈. 표정 변화가 적은 차갑고 단정한 정석 미남",line:"차갑고 무표정한 얼굴 뒤에 조용한 다정함을 숨긴 남자",desc:"말보다 행동이 앞서고, 쉽게 마음을 열지 않는 신중한 현실주의자"},
+ {id:"gyehyeon",c:"#ee7424",emoji:"🦊",name:"류계현",age:"31세",job:"소방관",h:"189cm",look:"애쉬브라운 머리와 짙은 분홍색 눈. 장난기 어린 미소가 돋보이는 호감형 미남",line:"처음 만난 사람과도 금세 친해지는 유쾌한 분위기 메이커",desc:"누구에게나 친절하지만, 그 친절이 모두 호감을 뜻하지는 않는다"},
+ {id:"hamin",c:"#e3a0a4",emoji:"🧡",name:"이하민",age:"29세",job:"간호사",h:"187cm",look:"연한 핑크브라운 머리와 갈색 눈. 부드러운 얼굴과 대비되는 단단하고 다부진 체격의 온화한 미남",line:"부드러운 부산 사투리와 다정한 미소가 매력적인 남자",desc:"평소엔 상냥하지만, 좋아하는 사람 앞에서는 누구보다 솔직하고 직진한다"},
+ {id:"haeon",c:"#d9a85c",emoji:"🐈",name:"여해온",age:"27세",job:"동물병원 간호사",h:"186cm",look:"갈색 머리와 금빛 눈. 군살 없는 탄탄한 체형, 날카로운 눈매와 까칠한 인상이 특징인 고양이상 미남",line:"까칠한 말투와 예민한 눈치, 빈틈을 좀처럼 허용하지 않는 남자",desc:"다정한 말은 서툴러도 필요한 순간에는 누구보다 먼저 움직인다"},
+ {id:"dojin",c:"#7fd13f",emoji:"🐶",name:"마도진",age:"20세",job:"대학생",h:"186cm",look:"녹색빛이 감도는 긴 흑발과 붉은 눈. 앳되고 밝은 강아지상 미남",line:"밝고 솔직한 막내. 호기심도 많고 감정이 얼굴에 그대로 드러난다",desc:"어리다고 만만하게 보는 건 싫어하는, 생각보다 당찬 남자"},
+ {id:"jun",c:"#7fb7d6",emoji:"💤",name:"이준",age:"34세",job:"제약회사 QC",h:"184cm",look:"짧은 백금발과 맑은 하늘색 눈. 나른하고 피곤해 보이는 분위기의 미남",line:"나른한 눈매와 피곤한 얼굴, 말수가 적어 처음엔 다가가기 어려운 남자",desc:"하지만 가까워질수록 무심한 농담과 엉뚱한 장난이 튀어나온다"}
+];
+const main=document.getElementById('chars'), nav=document.getElementById('nav');
+cast.forEach(p=>{
+  main.insertAdjacentHTML('beforeend',`
+  <section class="char" id="${p.id}" style="--c:${p.c}">
+    <div class="pic"><img src="images/${p.id}.jpg" alt="${p.name}" loading="lazy"></div>
+    <div class="info">
+      <div class="emoji" aria-hidden="true">${p.emoji}</div>
+      <h2>${p.name}</h2>
+      <p class="meta">${p.age} · ${p.job} · ${p.h}</p>
+      <p class="look">${p.look}</p>
+      <p class="line">${p.line}</p>
+      <p class="desc">${p.desc}</p>
+    </div>
+  </section>`);
+  nav.insertAdjacentHTML('beforeend',`<a href="#${p.id}" style="--c:${p.c}">${p.name}</a>`);
+});
+// 현재 보고 있는 섹션 표시
+[["schedule","일정"],["house","숙소"],["qna","Q&A"]].forEach(([id,t])=>nav.insertAdjacentHTML('beforeend',`<a href="#${id}" style="--c:#8fe3e0">${t}</a>`));
+const links=[...nav.querySelectorAll('a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}
+}),{threshold:.5});
+document.querySelectorAll('#top,.char,.sub').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>
